@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>PHP Test</title>
+  </head>
+  <body>
+    <?php 
+      
+    if ($_SERVER['REQUEST_METHOD'] === "GET")
+    {
+      $form = '<form name="calcform" action="index.php" method="POST"> 
+      <input name="n1" type="number" placeholder="3" required pattern="1?[0-9]">
+        <select name="op" id="operator">
+          <option value="add">+</option>
+          <option value="substract">-</option>  
+          <option value="multiply">*</option> 
+          <option value="divide">/</option>  
+          <option value="exponentiate">**</option>         
+        </select>
+        <input name="n2" type="number"  placeholder="4" required pattern="1?[0-9]">
+        <input type="submit">
+      </form>';
+      echo $form;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === "POST"){
+      $op = $_POST['op'];
+      $n1 = $_POST['n1'];
+      $n2 = $_POST['n2'];
+
+      switch ($op) {
+        case "add":
+          echo $n1 + $n2;
+          break;
+        case "substract":
+          echo $n1 - $n2;
+          break;
+        case "multiply":
+          echo $n1 * $n2;
+          break;
+        case "divide":
+          echo $n1 / $n2;
+          break;
+        case "exponentiate":
+          echo $n1 ** $n2;
+          break;
+      }
+
+    }
+
+
+    ?>
+
+
+  </body>
+</html>
